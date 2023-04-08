@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  #manually trigger runs
+  workflow_dispatch:
+
+jobs:
+   build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run on windows 2019
+        run: |
+         uname -a
