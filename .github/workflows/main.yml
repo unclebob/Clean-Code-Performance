@@ -10,4 +10,6 @@ jobs:
     steps:
       - name: Run on windows 2019
         run: |
-         uname -a
+         ls
+         clang++ cct.cc -O3 -o a.out
+         ./a.out
