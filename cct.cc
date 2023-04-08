@@ -10,15 +10,21 @@ long ms() {
 
 static int junk;
 
+static int zero  = 0;
+static int one = 0;
+
+void do_s(int x) {
+  switch(x) {
+    case 0: zero++; break;
+    case 1: one++; break;
+  }
+}
+
+
 void s_lup(int n) {
-  static int zero = 0;
-  static int one = 0;
   for (int i=0; i<n; i++) {
     junk = i%2;
-    switch(junk) {
-			case 0: zero++; break;
-      case 1: one++; break;
-    }
+    do_s(junk);
   }
 }
 
@@ -36,13 +42,16 @@ class D : public B {
     virtual void inc() {zero++;}
 };
 
+void do_c(B* b) {
+ b->inc(); 
+}
 
 void c_lup(int n) {
   B* d = new D;
  
   for (int i=0; i<n; i++) {
-		d->inc();
     junk = i%2;
+    do_c(d);
   }
 }
 
