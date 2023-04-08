@@ -11,5 +11,6 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
          ls
-         clang++ cct.cc -O3 -o a.out
-         ./a.out
+         clang++ cct.cc -o a.out -Wall
+         sudo apt-get install valgrind
+         valgrind ./a.out
