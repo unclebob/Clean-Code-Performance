@@ -13,8 +13,8 @@ long ms() {
 
 static int vs[1000];
 
-static int zero  = 0;
-static int one = 0;
+static long zero  = 0;
+static long one = 0;
 
 void do_s(int x) {
   switch(x) {
@@ -32,17 +32,19 @@ void s_lup(int n) {
 
 class B {
   public:
-    static int zero;
-    static int one;  
     virtual void inc() = 0;
 };
 
-int B::zero = 0;
 static B* bs[1000];
 
 class D : public B {
   public:
     virtual void inc() {zero++;}
+};
+
+class E : public B {
+  public:
+    virtual void inc() {one++;}
 };
 
 void do_c(B* b) {
@@ -57,17 +59,22 @@ void c_lup(int n) {
 
 int main(int ac, char** av)
 {
+  srand(time(NULL));
+
   long n = atol(av[1]);
 
   for (int i=0; i<1000; i++) {
-    vs[i] = i%2;
-    bs[i] = new D();
+    vs[i] = rand()%2;
+    bs[i] = rand()%2 ? (B*)new E() : (B*)new D();
   }
-
+  zero=one=0;
 	long start = ms();
   s_lup(n);
   long end_s = ms();
+  if (one != zero) cout<< "s-lup mismatch: " << zero << " " << one << endl;
+  zero=one=0;
   c_lup(n);
+  if (one != zero) cout<< "c-lup mismatch: " << zero << " " << one << endl;
   long end_c = ms();
   int s_time = (end_s - start);
   int c_time = (end_c - end_s);
