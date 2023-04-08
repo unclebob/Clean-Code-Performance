@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <sys/time.h>
+
+using namespace std;
 
 long ms() {
   struct timeval tv;
@@ -8,7 +11,7 @@ long ms() {
   return (tv.tv_sec % 86400) * 1000 + (tv.tv_usec/1000);
 }
 
-static int junk;
+static int vs[1000];
 
 static int zero  = 0;
 static int one = 0;
@@ -23,8 +26,7 @@ void do_s(int x) {
 
 void s_lup(int n) {
   for (int i=0; i<n; i++) {
-    junk = i%2;
-    do_s(junk);
+    do_s(vs[i%1000]);
   }
 }
 
@@ -36,6 +38,7 @@ class B {
 };
 
 int B::zero = 0;
+static B* bs[1000];
 
 class D : public B {
   public:
@@ -47,17 +50,20 @@ void do_c(B* b) {
 }
 
 void c_lup(int n) {
-  B* d = new D;
- 
   for (int i=0; i<n; i++) {
-    junk = i%2;
-    do_c(d);
+    do_c(bs[i%1000]);
   }
 }
 
 int main(int ac, char** av)
 {
   long n = atol(av[1]);
+
+  for (int i=0; i<1000; i++) {
+    vs[i] = i%2;
+    bs[i] = new D();
+  }
+
 	long start = ms();
   s_lup(n);
   long end_s = ms();
