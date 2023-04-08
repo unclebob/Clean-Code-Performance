@@ -38,11 +38,17 @@ class B {
 };
 
 int B::zero = 0;
+int B::one = 0;
 static B* bs[1000];
 
 class D : public B {
   public:
     virtual void inc() {zero++;}
+};
+
+class E : public B {
+  public:
+    virtual void inc() {one++;}
 };
 
 void do_c(B* b) {
@@ -61,7 +67,7 @@ int main(int ac, char** av)
 
   for (int i=0; i<1000; i++) {
     vs[i] = i%2;
-    bs[i] = new D();
+    bs[i] = vs[i] ? (B*)new D() : (B*)new E();
   }
 
 	long start = ms();
