@@ -8,8 +8,9 @@ jobs:
    build_linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Run on windows 2019
-        run: |
+      - name: Run on Linux
+      - uses: actions/checkout@v3
+      - run: |
          ls
          clang++ cct.cc -O3 -o a.out
          ./a.out
