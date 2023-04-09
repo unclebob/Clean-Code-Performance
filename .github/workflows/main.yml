@@ -13,5 +13,5 @@ jobs:
          # clang++ cct.cc -g -o a.out -Wall
          # sudo apt-get install valgrind
          # valgrind ./a.out
-         clang++ cct.cc  -o a.out -Wall
-         ./a.out 10
+         clang++ cct.cc  -o a.out -Wall -O2
+         ./a.out 20
