@@ -137,16 +137,16 @@ int main(int ac, char** av)
         auto rnd = rand() % 10;
         vs[i] = rnd;
         switch (rnd) {
-        	case 0: bs[i] = new D0();
-        	case 1: bs[i] = new D1();
-        	case 2: bs[i] = new D2();
-        	case 3: bs[i] = new D3();
-        	case 4: bs[i] = new D4();
-        	case 5: bs[i] = new D5();
-        	case 6: bs[i] = new D6();
-        	case 7: bs[i] = new D7();
-        	case 8: bs[i] = new D8();
-        	case 9: bs[i] = new D9();
+        	case 0: bs[i] = new D0();break;
+        	case 1: bs[i] = new D1();break;
+        	case 2: bs[i] = new D2();break;
+        	case 3: bs[i] = new D3();break;
+        	case 4: bs[i] = new D4();break;
+        	case 5: bs[i] = new D5();break;
+        	case 6: bs[i] = new D6();break;
+        	case 7: bs[i] = new D7();break;
+        	case 8: bs[i] = new D8();break;
+        	case 9: bs[i] = new D9();break;
 			
         }
 		
