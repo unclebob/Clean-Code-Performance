@@ -51,28 +51,66 @@ public:
 
 static B* bs[N];
 
-class D : public B 
+class D0 : public B 
 {
-     // int id = 0;
-
 public:
-    // D(int x) : id(x){}
-    // virtual void inc() { counters[id]++; }
     virtual void inc() { counters[0]++; }
 	
 };
-
-class E : public B 
+class D1 : public B 
 {
-     // int id = 0;
-
 public:
-    // E(int x) : id(x){}
-    // virtual void inc() { counters[id]--; }
     virtual void inc() { counters[1]++; }
 	
 };
-
+class D2 : public B 
+{
+public:
+    virtual void inc() { counters[2]++; }
+	
+};
+class D3 : public B 
+{
+public:
+    virtual void inc() { counters[3]++; }
+	
+};
+class D4 : public B 
+{
+public:
+    virtual void inc() { counters[4]++; }
+	
+};
+class D5 : public B 
+{
+public:
+    virtual void inc() { counters[5]++; }
+	
+};
+class D6 : public B 
+{
+public:
+    virtual void inc() { counters[6]++; }
+	
+};
+class D7 : public B 
+{
+public:
+    virtual void inc() { counters[7]++; }
+	
+};
+class D8 : public B 
+{
+public:
+    virtual void inc() { counters[8]++; }
+	
+};
+class D9 : public B 
+{
+public:
+    virtual void inc() { counters[9]++; }
+	
+};
 
 
 void do_c(B* b) 
@@ -98,8 +136,19 @@ int main(int ac, char** av)
     {
         auto rnd = rand() % 10;
         vs[i] = rnd;
-        // bs[i] = (i%2) ? (B*)new D(rnd) : (B*)new E(rnd);
-        bs[i] = (i%2) ? (B*)new D() : (B*)new E();
+        switch (rnd) {
+        	case 0: bs[i] = new D0();
+        	case 1: bs[i] = new D1();
+        	case 2: bs[i] = new D2();
+        	case 3: bs[i] = new D3();
+        	case 4: bs[i] = new D4();
+        	case 5: bs[i] = new D5();
+        	case 6: bs[i] = new D6();
+        	case 7: bs[i] = new D7();
+        	case 8: bs[i] = new D8();
+        	case 9: bs[i] = new D9();
+			
+        }
 		
     }
 
